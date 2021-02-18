@@ -1,22 +1,30 @@
-package part1;
-public class Task1{
-public static void main(String[] args) {
-  	 System.out.println("Sum is " + xMethod(5));
-  	 System.out.println("Sum is " +itMethod(5));
-}
+package part2;
 
-public static int xMethod(int n) {
-  	 if (n == 1)
-  		 return 1;
-  	 else
-  		 return n + xMethod(n - 1);
-}
-
-public static int itMethod(int n) {
-	int sum = 0;
-	for (int i =1; i<=n; i++) {
-		sum +=i;
+public class Task1 {
+	public static void main(String[] args) {
+	  //	 System.out.println(evenR(30));
+	  	 System.out.println(oddR(31));
 	}
-	return sum;
+	
+	public static boolean evenR(int n) {
+		if(n==0) {
+			return true;
+		}
+		else if(n==1){
+			return false;
+		}
+		
+		return evenR(n-2);
+	}
+	
+	public static boolean oddR(int n) {
+		if(n==0) {
+			return false;
+		}
+		else if(n==1){
+			return true;
+		}
+		
+		return oddR(n-2);
 	}
 }

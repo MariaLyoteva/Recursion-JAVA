@@ -1,26 +1,38 @@
-package part1;
+package part2;
+
+import java.util.Scanner;
 
 public class Task3 {
+	private static int num = 0;
 	public static void main(String[] args) {
-	   	 
-	   	 System.out.print(Recursive2pow(5));
-	   	 System.out.println();
-	   	 System.out.print(Iterative2pow(2, 5));
-	}
-	public static int Recursive2pow(int n) {
-		if (n==0) {
-			return 1;
-		}
-		return 2*Recursive2pow(n-1);
-		
-	}
-	public static int Iterative2pow(int osnova, int stepen) {
-		int izhod=1;
-		while(stepen>0) {
-			izhod*=osnova;
-			stepen--;
-		}
-		return izhod;
+		// Create a Scanner
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter number of disks: ");
+		int n = input.nextInt();
+
+		// Find the solution recursively
+		System.out.println("The moves are:");
+		moveDisks(n, 'A', 'B', 'C');
+		System.out.println(num);
 	}
 
+	/**
+	 * The method for finding the solution to move n disks from fromTower to toTower
+	 * with auxTower
+	 */
+	public static void moveDisks(int n, char fromTower, char toTower, char auxTower) {
+		if (n == 1) // Stopping condition
+			moveDisk( n,fromTower, toTower);
+		else {
+			moveDisks(n - 1, fromTower, auxTower, toTower);
+			moveDisk( n,fromTower, toTower);
+			moveDisks(n - 1, auxTower, toTower, fromTower);
+		}
+	}
+	
+	private static void moveDisk (int n, char fromTower, char toTower){
+		System.out.println("Move disk " + n + " from " + fromTower + " to " + toTower);
+		num ++;
+	}
 }
+

@@ -1,22 +1,15 @@
-package part1;
+package part2;
 
 public class Task2 {
 	public static void main(String[] args) {
-	   	 xMethod(1234567);
-	   	 System.out.println();
-	   	 itMethod(1234567);
+		  //	 System.out.println(evenR(30));
+		  	 System.out.println(dec2Bin(5));
+		}
+	
+	public static String dec2Bin(int value) {
+		if(value ==1) {
+			return "1";
+		}
+		return dec2Bin(value/2) + value%2;
 	}
-
-	public static void xMethod(int n) {
-	   	 if (n > 0) {
-	   		 System.out.print(n % 10);
-	   		 xMethod(n / 10);
-	   	 }
-	 }
- public static void itMethod(int n) {
-	 while (n>0) {
-		 System.out.print(n % 10);
-		 n /= 10; 
-	 }
- }
 }
